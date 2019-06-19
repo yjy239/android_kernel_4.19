@@ -403,6 +403,8 @@ struct dma_buf {
  * @priv: exporter specific attachment data.
  * @dynamic_mapping: true if dma_buf_map/unmap_attachment() is called with the
  * dma_resv lock held.
+ * @dma_map_attrs: DMA attributes to be used when the exporter maps the buffer
+ * through dma_buf_map_attachment.
  *
  * This structure holds the attachment information between the dma_buf buffer
  * and its user device(s). The list contains one attachment struct per device
@@ -421,6 +423,7 @@ struct dma_buf_attachment {
 	enum dma_data_direction dir;
 	bool dynamic_mapping;
 	void *priv;
+	unsigned long dma_map_attrs;
 };
 
 /**
