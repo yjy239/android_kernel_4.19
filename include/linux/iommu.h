@@ -249,6 +249,7 @@ struct iommu_iotlb_gather {
  * @pgsize_bitmap: bitmap of all possible supported page sizes
  * @sva_bind_gpasid: bind guest pasid and mm
  * @sva_unbind_gpasid: unbind guest pasid and mm
+ * @owner: Driver module providing these ops
  */
 struct iommu_ops {
 	bool (*capable)(enum iommu_cap);
@@ -318,6 +319,7 @@ struct iommu_ops {
 	int (*sva_unbind_gpasid)(struct device *dev, int pasid);
 
 	unsigned long pgsize_bitmap;
+	struct module *owner;
 };
 
 /**
